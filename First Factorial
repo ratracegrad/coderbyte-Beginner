@@ -1,0 +1,10 @@
+function FirstFactorial(num) { 
+
+  var tot = 1;
+  for (var i = 2; i <= num; i++) {
+    tot *= i;
+  }
+   
+  return tot;
+         
+}
