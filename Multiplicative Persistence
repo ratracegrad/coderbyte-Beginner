@@ -1,0 +1,38 @@
+/***************************************************************************************
+*                                                                                      *
+*                  CODERBYTE BEGINNER CHALLENGE                                        *
+*                                                                                      *
+*  Multiplicative Persistence                                                          *
+*  Using the JavaScript language, have the function FirstFactorial(num) take the num   *
+*  parameter being passed and return the factorial of it (ie. if num = 4,              *
+*  return (4 * 3 * 2 * 1)). For the test cases, the range will be between 1 and 18.    *                                                     *
+*                                                                                      *
+*  SOLUTION                                                                            *
+*  You can either use an iterative or recursive function to solve this challenge.      *
+*  I am going to use an interative function. I am going to start with a value of 1     *
+*  for my total and then keep multiplying it by the next number until I reach num.     *
+*                                                                                      *
+*  Steps for solution                                                                  *
+*    1) Initialize vars sum and loop                                                   *
+*    2) Loop from 2 to num and multiple tot by num to get new tot.                     *
+*    3) Return tot for answer.                                                         *
+*                                                                                      *
+***************************************************************************************/
+
+function MultiplicativePersistence(num) { 
+
+   var sum, loop = 0;
+    var val1 = num.toString(10).split("");
+    
+     while( val1.length > 1 ) {
+        sum = 1;
+        val1.forEach( function(number) {
+            sum = sum * number;
+        });
+        val1 = sum.toString(10).split("");
+        loop++;
+    } ;
+    
+    return loop;
+         
+}
