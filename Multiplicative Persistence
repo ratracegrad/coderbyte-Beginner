@@ -8,14 +8,18 @@
 *  return (4 * 3 * 2 * 1)). For the test cases, the range will be between 1 and 18.    *                                                     *
 *                                                                                      *
 *  SOLUTION                                                                            *
-*  You can either use an iterative or recursive function to solve this challenge.      *
-*  I am going to use an interative function. I am going to start with a value of 1     *
-*  for my total and then keep multiplying it by the next number until I reach num.     *
+* The challenge passes a string but it expects us to do Math on it so it needs to      *
+*  be converted to numbers. I will use the base 10 parameter of the toString()         *
+*  function to convert each entry in the array to a Number. Then I am going to         *
+*  multiply each entry in the array to get a total. I will repeat this until my        *
+*  total is a single digit number. The number of times I multiplied is returned        *
+*  as the answer.                                                                      *
 *                                                                                      *
 *  Steps for solution                                                                  *
 *    1) Initialize vars sum and loop                                                   *
-*    2) Loop from 2 to num and multiple tot by num to get new tot.                     *
-*    3) Return tot for answer.                                                         *
+*    2) Convert str to an array of numbers                                             *
+*    3) Loop until the sum of digits in array is a single digit number                 *
+*    4) Return number of loops as answer                                               *
 *                                                                                      *
 ***************************************************************************************/
 
