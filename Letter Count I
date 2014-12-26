@@ -11,40 +11,53 @@
                                                  *
 *                                                                                      *
 *  SOLUTION                                                                            *
+*  The first step is to remove all punctuation from the string being passed in which   *
+*  I do with the replace function. I also convert string to LowerCase to account for   *
+*  any words in the string that might be ProperCase. I then convert string into an     *
+*  array of words breaking on space. Next I loop through each word in the array.       *
+*  I loop through each character in the word and count the number of times the letter  *
+*  repeats. Then I compare the max times a letter is repeated in that word to the      *
+*  current value of maxCt which is initalized with a value of 1. If the number of      *
+*  repeated characters is greater then I update the maxCt with the new value and the   *
+*  current word is the maxWord.  When finished loop I check to see if any word has     *
+*  repeated characters and if not return -1 else return the word with max repeated     *
+*  characters.                                                                         *
 *                                                                                      *
 *  Steps for solution                                                                  *
-*    1)                                                               *
-*    2)                     *
-*    3)                                                        *
+*    1) Initialize variables                                                           *
+*    2) Convert string to lowerCase, remove all punctuation and store in array         *
+*    3) Loop through each word in array and count the occurance of each letter         *
+*    4) Compare occurance of repeated letter to maxCt                                  *
+*    5) If greater update maxCt to new value and store word in maxWord                 *
+*    6) Return word with max repeated characters or -1                                 *
 *                                                                                      *
 ***************************************************************************************/
 
-function LetterCountI(str) { 
+function LetterCountI(str) {
+    var ctObj, tempWord, maxWord, maxCt = 1;
+    var arr = str.toLowerCase().replace(/[^a-zA-Z ]/g,"").split(" ");
 
-  var words = str.split(" ");
-  var count = 0;
-  var word = "";
-  // code goes here
-  for (var i = 0; i < words.length; i++) {
-    var wordx = words[i];
-    var sum = 0;
-    for (var j = 0; j < words[i].length; j++) {  
-      var letter = wordx[j];
-      for (var k = 0; k < wordx.length; k++) {
-        if ((j != k) && (letter === wordx[k])){
-          sum += 1;
+    for(var i = 0; i < arr.length; i++){
+        tempWord = arr[i];
+        ctObj = {}
+
+        for(var j = 0; j <tempWord.length; j++){
+          ctObj[tempWord[j]] = ctObj[tempWord[j]] || 0;
+          ctObj[tempWord[j]]++;
         }
-      }
+        for (var key in ctObj) {
+          if (ctObj.hasOwnProperty(key)) {
+              if (ctObj[key] > maxCt) {
+                  maxCt = ctObj[key];
+                  maxWord = tempWord;
+              }
+          }
+        }
     }
-    if (sum > count) {
-        count = sum;
-        word = wordx;
+      
+    if (maxCt === 1) {
+        return -1;
+    } else {
+        return maxWord;
     }
-  }
-  if (count > 0) {
-    return word;
-  } else{
-    return "-1";
-  }
-         
 }
