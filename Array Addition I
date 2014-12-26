@@ -29,30 +29,32 @@
 
 function ArrayAdditionI(arr) { 
 
-  arr.sort(function(a,b){return a - b})
-  var largest = arr.pop();
-  var sum = 0;
+  arr.sort(function(a,b){return a - b});
+  var maxNum = arr.pop();
+  var tot = 0;
+    
   for (var i = 0; i < arr.length; i++){
-    sum += arr[i];
+    tot += arr[i];
     for (var j = 0; j < arr.length; j++){
       if (i != j) {
-        sum += arr[j];
-        if (sum == largest) {
+        tot += arr[j];
+        if (tot == maxNum) {
           return true;
         }
       }
     }
+      
     for (var k = 0; k < arr.length; k++) {
       if (i != k) {
-        sum -= arr[k];
-        if (sum == largest) {
+        tot -= arr[k];
+        if (tot == maxNum) {
           return true;
         }
       }
     }
-    sum = 0;
+    tot = 0;
   }
-
+    
   return false; 
          
 }
