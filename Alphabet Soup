@@ -11,23 +11,17 @@
 *  SOLUTION                                                                            *
 *  The Array has a built-in sort function but String does not. The first step is to    *
 *  convert the string to an Array and sort it in alphabetical order. Then covert the   *
-*  Array back to a string with the toString() function.  The last step is to remove    *
-*  the commans that separate each character.                                           *
+*  Array back to a string with the join() function.                                    *
+*                                                                                      *
 *  Steps for solution                                                                  *
 *    1) Convert string to an array                                                     *
 *    2) Sort array in alphabetical order                                               *
 *    3) Convert array back to a string                                                 *
-*    4) Remove comma separators in our string                                          *
 *                                                                                      *
 ***************************************************************************************/
 
 function AlphabetSoup(str) { 
 
-  var myArray = str.split("")
-        
-     myArray.sort();
-     var newStr = myArray.toString();
-  
-        return newStr.replace(/,/g, ""); 
+    return str.split("").sort().join("");
          
 }
